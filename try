@@ -6,13 +6,13 @@ then
     exit 1
 fi
 
-if [ $1 = '-q' -o $1 = '--silent' ]
+if [ "$1" = '-q' -o "$1" = '--silent' ]
 then
     silent=true
     shift
 fi
 
-$* > /dev/null 2> /dev/null
+eval $* > /dev/null 2> /dev/null
 status=$?
 if [ "$silent" != true ]
 then
