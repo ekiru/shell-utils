@@ -1,0 +1,15 @@
+#!/bin/sh
+
+PATH=/bin:/usr/bin
+
+if [ $# -lt 1 ]
+then
+    echo "Usage: $0 INCLUDEPATH" >&2
+    exit 1
+fi
+
+until [ $# -eq 0 ]
+do
+cpp -include "$1" /dev/null
+shift
+done

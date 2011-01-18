@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]
+then
+    echo "Usage: try [-q | --silent] COMMANDLINE" >&2
+    exit 1
+fi
+
+if [ $1 = '-q' -o $1 = '--silent' ]
+then
+    silent=true
+    shift
+fi
+
+$* > /dev/null 2> /dev/null
+status=$?
+if [ "$silent" != true ]
+then
+    echo $status
+fi
+exit $status
